@@ -24,4 +24,23 @@ class Queue {
   }
 }
 
-const queue = new Queue(1, 4, 5, 6);
+const mergeQueues = (q1, q2) => {
+  const q3 = new Queue();
+  const length = q1.size > q2.size ? q1.size : q2.size;
+  for (let i = 0; i < length; i++) {
+    const item1 = q1.unshift();
+    const item2 = q2.unshift();
+    if (item1) {
+      q3.push(item1);
+    }
+    if (item2) {
+      q3.push(item2);
+    }
+  }
+  return q3;
+};
+
+const queue1 = new Queue(1, 2, 3, 4);
+const queue2 = new Queue('a', 'b', 'c', 'd', 'e', 'f', 'g');
+const queue3 = mergeQueues(queue1, queue2);
+console.log(queue3);
